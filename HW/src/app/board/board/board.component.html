@@ -1,0 +1,26 @@
+<div>
+  <div cdkDropListGroup class="row">
+    <div class="col" *ngFor="let column of boardService.getBoard$() | async">
+      <h2>{{ column.title }}</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="column.list"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          cdkDrag
+          class="example-box"
+          [ngStyle]="{ background: column.color }"
+          *ngFor="let item of column.list"
+        >
+          <app-board-item
+            [item]="item"
+            (emitDeleteCard)="onDeleteCard($event, column.id)"
+          ></app-board-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
