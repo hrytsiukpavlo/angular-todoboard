@@ -16,11 +16,25 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onColorChange(color: string, columnId: number) {
+    this.boardService.changeColumnColor(color, columnId);
+  }
+
+  onAddCard(text: string, columnId: number) {
+    if (text) {
+      this.boardService.addCard(text, columnId);
+    }
+  }
+
+  onDeleteColumn(columnId: number) {
+    this.boardService.deleteColumn(columnId);
+  }
+
   onDeleteCard(cardId: number, columnId: number) {
     this.boardService.deleteCard(cardId, columnId);
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

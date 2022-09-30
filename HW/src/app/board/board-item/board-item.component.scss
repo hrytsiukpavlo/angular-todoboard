@@ -1,19 +1,23 @@
-.main {
+.card {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: space-between;
+  color: #fff;
+  height: 70px;
+  padding: 0 10px;
+  margin-bottom: 5px;
 
-button {
-  background-color: transparent;
-  border: none;
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+      cursor: pointer;
+    }
 
-  i {
-    color: #fff;
-    margin-left: 10px;
+    i {
+      color: #fff;
+    }
   }
 }

@@ -1,9 +1,6 @@
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
-
-<div class="main">
+<div class="card">
   <div>{{ item.text }}</div>
-  <button (click)="onCardDelete(item.id)"><i class="fa fa-trash"></i></button>
+  <button (click)="onCardDelete(item.id)">
+    <button><i class="fa fa-trash-o"></i></button>
+  </button>
 </div>

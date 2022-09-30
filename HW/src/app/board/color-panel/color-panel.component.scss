@@ -1,0 +1,18 @@
+.color-panel-item {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease-in-out opacity 0.1s;
+  margin: 10px 5px;
+}
+
+.color-panel-item:hover {
+  opacity: 0.6;
+}
+
+.colors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

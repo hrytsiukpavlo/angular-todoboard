@@ -6,11 +6,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./board-item.component.scss'],
 })
 export class BoardItemComponent implements OnInit {
-  @Input() item: any;
+  @Input() item;
+  @Output() emitText: EventEmitter<{ id: number; text: string }> =
+    new EventEmitter();
+  @Output() emitCardItem: EventEmitter<{ card: any; increase: boolean }> =
+    new EventEmitter();
   @Output() emitDeleteCard: EventEmitter<number> = new EventEmitter();
+
+  commentInput = '';
+  open = false;
   constructor() {}
 
   ngOnInit(): void {}
+
+  onCardItemEmit(card: any, increase: boolean) {
+    this.emitCardItem.emit({ card, increase });
+  }
 
   onCardDelete(id: number) {
     this.emitDeleteCard.emit(id);

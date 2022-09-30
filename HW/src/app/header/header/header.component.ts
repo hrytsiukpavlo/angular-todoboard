@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BoardService } from 'src/app/services/board.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(public boardService: BoardService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  addColumn(event: string) {
+    console.log(event);
+    if (event) {
+      this.boardService.addColumn(event);
+    }
   }
-
 }

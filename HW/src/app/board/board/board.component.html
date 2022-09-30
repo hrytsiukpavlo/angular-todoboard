@@ -1,24 +1,41 @@
-<div>
-  <div cdkDropListGroup class="row">
-    <div class="col" *ngFor="let column of boardService.getBoard$() | async">
-      <h2>{{ column.title }}</h2>
+<div cdkDropListGroup class="container">
+  <div class="items">
+    <div *ngFor="let column of boardService.getBoard$() | async" class="item">
+      <div class="top">
+        <h2>{{ column.title }}</h2>
+        <button (click)="onDeleteColumn(column.id)">
+          <i class="fa fa-close"></i>
+        </button>
+      </div>
+
+      <div class="mid">
+        <app-color-panel
+          (emitColor)="onColorChange($event, column.id)"
+        ></app-color-panel>
+
+        <app-dialog
+          (emitText)="onAddCard($event, column.id)"
+          [question]="'Add new card in ' + column.title + ' column'"
+        >
+          <button><span>Add</span><i class="fa fa-plus"></i></button>
+        </app-dialog>
+      </div>
 
       <div
         cdkDropList
         [cdkDropListData]="column.list"
-        class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
         <div
           cdkDrag
-          class="example-box"
           [ngStyle]="{ background: column.color }"
           *ngFor="let item of column.list"
         >
           <app-board-item
             [item]="item"
             (emitDeleteCard)="onDeleteCard($event, column.id)"
-          ></app-board-item>
+          >
+          </app-board-item>
         </div>
       </div>
     </div>

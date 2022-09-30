@@ -1,4 +1,10 @@
-<div>
-  <h1>Homework</h1>
-  <button>New column</button>
+<div class="header">
+  <div>
+    <h1>Test Board</h1>
+  </div>
+  <div>
+    <app-dialog (emitText)="addColumn($event)" question="Add new column">
+      <button>Add Column</button>
+    </app-dialog>
+  </div>
 </div>
