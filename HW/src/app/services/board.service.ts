@@ -1,4 +1,5 @@
 import { ListKeyManager } from '@angular/cdk/a11y';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Card, Column } from '../models/column.model';
@@ -7,30 +8,43 @@ import { Card, Column } from '../models/column.model';
   providedIn: 'root',
 })
 export class BoardService {
-  private initBoard = [
-    {
-      id: 1,
-      title: 'To Do',
-      description: '111',
-      creationDate: `${String(new Date().getDate()).padStart(2, '0')}/${String(
-        new Date().getMonth() + 1
-      ).padStart(2, '0')}/${new Date().getFullYear()}`,
-      color: '#009886',
-      list: [
-        {
-          id: 1,
-          text: 'Example card item',
-          like: 1,
-          comments: [
-            {
-              id: 1,
-              text: 'Some comment',
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  private initBoard = [];
+  constructor(private http: HttpClient) {}
+
+  private loadData() {
+    let result = this.http
+      .get<any>('http://localhost:3000/boards')
+      .subscribe((response) => {
+        this.initBoard = response;
+        console.log(this.initBoard);
+      });
+    return result;
+  }
+
+  // private initBoard = [
+  //   {
+  //     id: 1,
+  //     title: 'To Do',
+  //     description: '111',
+  //     creationDate: `${String(new Date().getDate()).padStart(2, '0')}/${String(
+  //       new Date().getMonth() + 1
+  //     ).padStart(2, '0')}/${new Date().getFullYear()}`,
+  //     color: '#009886',
+  //     list: [
+  //       {
+  //         id: 1,
+  //         text: 'Example card item',
+  //         like: 1,
+  //         comments: [
+  //           {
+  //             id: 1,
+  //             text: 'Some comment',
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // ];
 
   private board: Column[] = this.initBoard;
   private board$ = new BehaviorSubject<Column[]>(this.initBoard);
@@ -50,6 +64,7 @@ export class BoardService {
   }
 
   addColumn(title: string, description: string) {
+    // this.loadData();
     const newColumn: Column = {
       id: Date.now(),
       title: title,

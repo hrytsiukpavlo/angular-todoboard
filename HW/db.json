@@ -1,0 +1,55 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "111",
+      "description": "111",
+      "creationDate": "123",
+      "color": "#009886",
+      "list": [
+        {
+          "id": 1,
+          "text": "Example card item",
+          "like": 1,
+          "comments": [
+            {
+              "id": 1,
+              "text": "Some comment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "222",
+      "description": "111",
+      "creationDate": "123",
+      "color": "#009886",
+      "list": [
+        {
+          "id": 1,
+          "text": "Example card item",
+          "like": 1,
+          "comments": [
+            {
+              "id": 1,
+              "text": "Some comment"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "text": "Example card item",
+          "like": 1,
+          "comments": [
+            {
+              "id": 1,
+              "text": "Some comment"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
