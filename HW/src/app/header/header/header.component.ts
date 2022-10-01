@@ -10,9 +10,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addColumn(event: string) {
-    if (event) {
-      this.boardService.addColumn(event);
+  askColumn() {
+    const colName = prompt('Enter column name');
+    if (colName) {
+      const description = prompt('Enter description');
+      if (description) {
+        this.addColumn(colName, description);
+      }
+    }
+  }
+
+  addColumn(title: string, description: string) {
+    if (title && description) {
+      this.boardService.addColumn(title, description);
     }
   }
 }

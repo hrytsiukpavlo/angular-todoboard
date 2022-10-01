@@ -14,6 +14,7 @@ export interface Column {
   id: number;
   title: string;
   description: string;
+  creationDate: Date | string;
   color: string;
   list: Card[];
 }

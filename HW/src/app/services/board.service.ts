@@ -12,6 +12,9 @@ export class BoardService {
       id: 1,
       title: 'To Do',
       description: '111',
+      creationDate: `${String(new Date().getDate()).padStart(2, '0')}/${String(
+        new Date().getMonth() + 1
+      ).padStart(2, '0')}/${new Date().getFullYear()}`,
       color: '#009886',
       list: [
         {
@@ -46,11 +49,14 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addColumn(title: string) {
+  addColumn(title: string, description: string) {
     const newColumn: Column = {
       id: Date.now(),
       title: title,
-      description: '123',
+      description: description,
+      creationDate: `${String(new Date().getDate()).padStart(2, '0')}/${String(
+        new Date().getMonth() + 1
+      ).padStart(2, '0')}/${new Date().getFullYear()}`,
       color: '#009886',
       list: [],
     };
