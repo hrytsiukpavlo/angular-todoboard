@@ -11,7 +11,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   addColumn(event: string) {
-    console.log(event);
     if (event) {
       this.boardService.addColumn(event);
     }

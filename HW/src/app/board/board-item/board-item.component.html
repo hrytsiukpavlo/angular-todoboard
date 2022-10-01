@@ -1,6 +1,11 @@
 <div class="card">
   <div>{{ item.text }}</div>
-  <button (click)="onCardDelete(item.id)">
-    <button><i class="fa fa-trash-o"></i></button>
-  </button>
+  <div>
+    <button (click)="onCardEdit(item.id)">
+      <button><i class="fa fa-edit"></i></button>
+    </button>
+    <button (click)="onCardDelete(item.id)">
+      <button><i class="fa fa-trash-o"></i></button>
+    </button>
+  </div>
 </div>

@@ -26,8 +26,16 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  onEditColumn(columnId: number) {
+    this.boardService.editColumn(columnId);
+  }
+
   onDeleteColumn(columnId: number) {
     this.boardService.deleteColumn(columnId);
+  }
+
+  onEditCard(cardId: number, columnId: number) {
+    this.boardService.editCard(cardId, columnId);
   }
 
   onDeleteCard(cardId: number, columnId: number) {

@@ -10,14 +10,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [DialogComponent, DialogBodyComponent],
+  declarations: [
+    DialogComponent,
+    DialogBodyComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatDialogModule,
+    MatDialogModule
   ],
-  exports: [DialogComponent],
+  exports: [
+    DialogComponent
+  ]
 })
-export class DialogModule {}
+export class DialogModule { }
