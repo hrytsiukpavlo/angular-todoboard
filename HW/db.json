@@ -2,21 +2,43 @@
   "boards": [
     {
       "id": 1,
-      "title": "111",
-      "description": "111",
-      "creationDate": "123",
-      "color": "#009886",
+      "title": "2",
+      "description": "3",
+      "creationDate": "02/10/2022",
+      "color": "#b36619",
       "list": [
         {
-          "id": 1,
-          "text": "Example card item",
-          "like": 1,
-          "comments": [
-            {
-              "id": 1,
-              "text": "Some comment"
-            }
-          ]
+          "id": 1664713438383,
+          "text": "1",
+          "like": 0,
+          "comments": []
+        },
+        {
+          "id": 1664713410496,
+          "text": "2",
+          "like": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": 1664710508203,
+      "title": "2",
+      "description": "3",
+      "creationDate": "02/10/2022",
+      "color": "#b36619",
+      "list": [
+        {
+          "id": 1664713438383,
+          "text": "1",
+          "like": 0,
+          "comments": []
+        },
+        {
+          "id": 1664713410496,
+          "text": "2",
+          "like": 0,
+          "comments": []
         }
       ]
     }
