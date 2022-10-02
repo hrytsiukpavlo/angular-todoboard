@@ -6,8 +6,6 @@ export interface Comment {
 export interface Card {
   id: number;
   text: string;
-  like: number;
-  comments: Comment[];
 }
 
 export interface Column {

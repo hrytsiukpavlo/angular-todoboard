@@ -1,0 +1,22 @@
+<div class="main">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input
+      class="inp"
+      placeholder="Column name"
+      type="text"
+      formControlName="title"
+    />
+    <input
+      placeholder="Description"
+      type="text"
+      formControlName="description"
+    />
+    <p *ngIf="title.errors?.minlength || description.errors?.minlength">
+      Minimum field length is 3 symbols
+    </p>
+    <div class="buttons">
+      <input type="submit" value="Submit" />
+      <input type="button" value="Cancel" />
+    </div>
+  </form>
+</div>

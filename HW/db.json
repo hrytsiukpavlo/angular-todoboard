@@ -1,44 +1,32 @@
 {
   "boards": [
     {
-      "id": 1,
-      "title": "2",
-      "description": "3",
+      "id": 1664716299634,
+      "title": "12",
+      "description": "2",
       "creationDate": "02/10/2022",
-      "color": "#b36619",
+      "color": "#EDC400",
       "list": [
         {
-          "id": 1664713438383,
-          "text": "1",
-          "like": 0,
-          "comments": []
+          "id": 1664717080095,
+          "text": "1"
         },
         {
-          "id": 1664713410496,
-          "text": "2",
-          "like": 0,
-          "comments": []
+          "id": 1664717073592,
+          "text": "222"
         }
       ]
     },
     {
-      "id": 1664710508203,
-      "title": "2",
-      "description": "3",
+      "id": 1664716586237,
+      "title": "new",
+      "description": "Desc",
       "creationDate": "02/10/2022",
-      "color": "#b36619",
+      "color": "#009886",
       "list": [
         {
-          "id": 1664713438383,
-          "text": "1",
-          "like": 0,
-          "comments": []
-        },
-        {
-          "id": 1664713410496,
-          "text": "2",
-          "like": 0,
-          "comments": []
+          "id": 1664716608975,
+          "text": "3"
         }
       ]
     }

@@ -49,15 +49,16 @@ export class BoardService {
     this.http
       .delete<{ id: number }>(`http://localhost:3000/boards/${columnId}`)
       .subscribe((res) => {
-        this.board = this.board.filter(
+        this.board = this.initBoard.filter(
           (column: Column) => column.id !== columnId
         );
         this.board$.next([...this.board]);
       });
+
+    this.board$.next([...this.board]);
   }
 
   editColumn(columnId: number) {
-    let res;
     this.board = this.initBoard.map((column: Column) => {
       if (column.id === columnId) {
         const newTitle = prompt('Enter new title');
@@ -65,25 +66,21 @@ export class BoardService {
           column.title = newTitle;
         }
       }
-      res = column;
-      return column;
-    });
-
-    if (res) {
       this.http
-        .put<any>(`http://localhost:3000/boards/${columnId}`, res)
+        .put<any>(`http://localhost:3000/boards/${columnId}`, column)
         .subscribe((res) => {
           this.board$.next([...this.board]);
         });
-    }
+      return column;
+    });
+
+    this.board$.next([...this.board]);
   }
 
   addCard(text: string, columnId: number) {
     const newCard: Card = {
       id: Date.now(),
       text,
-      like: 0,
-      comments: [],
     };
 
     this.board = this.initBoard.map((column: Column) => {
@@ -97,6 +94,8 @@ export class BoardService {
         });
       return column;
     });
+
+    this.board$.next([...this.board]);
   }
 
   deleteCard(cardId: number, columnId: number) {
@@ -112,7 +111,7 @@ export class BoardService {
       return column;
     });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
   }
 
   editCard(cardId: number, columnId: number) {
@@ -149,6 +148,7 @@ export class BoardService {
         });
       return column;
     });
+
     this.board$.next([...this.board]);
   }
 }
