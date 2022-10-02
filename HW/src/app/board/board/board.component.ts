@@ -12,9 +12,14 @@ import { BoardService } from 'src/app/services/board.service';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
+  public board = [];
   constructor(public boardService: BoardService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.boardService.getBoard$().subscribe(data=>{
+      console.log('data', data)
+    })
+  }
 
   onColorChange(color: string, columnId: number) {
     this.boardService.changeColumnColor(color, columnId);

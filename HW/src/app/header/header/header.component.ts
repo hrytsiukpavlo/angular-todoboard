@@ -8,7 +8,10 @@ import { BoardService } from 'src/app/services/board.service';
 export class HeaderComponent implements OnInit {
   constructor(public boardService: BoardService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.boardService.loadData());
+    console.log('inited');
+  }
 
   askColumn() {
     const colName = prompt('Enter column name');

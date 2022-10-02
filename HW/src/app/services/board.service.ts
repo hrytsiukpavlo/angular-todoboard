@@ -11,12 +11,13 @@ export class BoardService {
   private initBoard = [];
   constructor(private http: HttpClient) {}
 
-  private loadData() {
+  public loadData() {
     let result = this.http
       .get<any>('http://localhost:3000/boards')
       .subscribe((response) => {
         this.initBoard = response;
-        console.log(this.initBoard);
+        // console.log(this.initBoard);
+        this.board$.next(this.initBoard);
       });
     return result;
   }
@@ -64,7 +65,6 @@ export class BoardService {
   }
 
   addColumn(title: string, description: string) {
-    // this.loadData();
     const newColumn: Column = {
       id: Date.now(),
       title: title,
@@ -75,9 +75,12 @@ export class BoardService {
       color: '#009886',
       list: [],
     };
-
-    this.board = [...this.board, newColumn];
-    this.board$.next([...this.board]);
+    this.http
+      .post<{ id: number }>('http://localhost:3000/boards', newColumn)
+      .subscribe((res) => {
+        this.board$.next([...this.board$.value, newColumn]);
+      });
+    // this.board = [...this.board, newColumn];
   }
 
   addCard(text: string, columnId: number) {
