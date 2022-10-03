@@ -7,20 +7,25 @@ import { BoardService } from 'src/app/services/board.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(public boardService: BoardService) {}
-
+  display = false;
   ngOnInit(): void {
     console.log(this.boardService.loadData());
     console.log('inited');
   }
 
+  closeInput() {
+    this.display = !this.display;
+  }
+
   askColumn() {
-    const colName = prompt('Enter column name');
-    if (colName) {
-      const description = prompt('Enter description');
-      if (description) {
-        this.addColumn(colName, description);
-      }
-    }
+    this.display = !this.display;
+    // const colName = prompt('Enter column name');
+    // if (colName) {
+    //   const description = prompt('Enter description');
+    //   if (description) {
+    //     this.addColumn(colName, description);
+    //   }
+    // }
   }
 
   addColumn(title: string, description: string) {

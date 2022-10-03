@@ -1,5 +1,8 @@
 <div class="main">
   <form [formGroup]="form" (ngSubmit)="submit()">
+    <!-- <div>
+      {{ this.display }}
+    </div> -->
     <input
       class="inp"
       placeholder="Column name"
@@ -16,7 +19,7 @@
     </p>
     <div class="buttons">
       <input type="submit" value="Submit" />
-      <input type="button" value="Cancel" />
+      <input type="button" value="Cancel" (click)="this.visible()" />
     </div>
   </form>
 </div>

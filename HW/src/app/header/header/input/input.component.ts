@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -25,6 +25,14 @@ export class InputComponent implements OnInit {
     ]),
   });
 
+  constructor(public modalService: ModalService) {
+    this.visible = () => {
+      console.log('chcahschas');
+    };
+  }
+
+  @Input() visible: (args?: any) => void | undefined;
+
   get title() {
     return this.form.controls.title as FormControl;
   }
@@ -32,8 +40,6 @@ export class InputComponent implements OnInit {
   get description() {
     return this.form.controls.description as FormControl;
   }
-
-  constructor(public modalService: ModalService) {}
 
   ngOnInit(): void {}
 

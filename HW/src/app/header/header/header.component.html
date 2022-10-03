@@ -4,5 +4,6 @@
   </div>
   <div>
     <button (click)="askColumn()">+</button>
+    <app-input *ngIf="display" [visible]="closeInput"></app-input>
   </div>
 </div>
