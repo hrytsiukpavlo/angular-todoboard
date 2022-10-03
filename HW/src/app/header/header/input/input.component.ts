@@ -29,9 +29,13 @@ export class InputComponent implements OnInit {
     this.visible = () => {
       console.log('chcahschas');
     };
+    this.formValues = () => {
+      console.log('form values');
+    };
   }
 
   @Input() visible: (args?: any) => void | undefined;
+  @Input() formValues: (title: string, description: string) => void | undefined;
 
   get title() {
     return this.form.controls.title as FormControl;
@@ -45,5 +49,9 @@ export class InputComponent implements OnInit {
 
   submit() {
     console.log(this.form.value);
+    this.visible();
+    if (this.form.value.title && this.form.value.description) {
+      this.formValues(this.form.value.title, this.form.value.description);
+    }
   }
 }

@@ -49,32 +49,29 @@ export class BoardService {
     this.http
       .delete<{ id: number }>(`http://localhost:3000/boards/${columnId}`)
       .subscribe((res) => {
-        this.board = this.initBoard.filter(
-          (column: Column) => column.id !== columnId
-        );
-        this.board$.next([...this.board]);
+        this.board$.next([
+          ...this.board$.value.filter(
+            (column: Column) => column.id !== columnId
+          ),
+        ]);
       });
-
-    this.board$.next([...this.board]);
   }
 
   editColumn(columnId: number) {
-    this.board = this.initBoard.map((column: Column) => {
-      if (column.id === columnId) {
-        const newTitle = prompt('Enter new title');
-        if (newTitle) {
-          column.title = newTitle;
-        }
-      }
-      this.http
-        .put<any>(`http://localhost:3000/boards/${columnId}`, column)
-        .subscribe((res) => {
-          this.board$.next([...this.board]);
-        });
-      return column;
+    const newTitle = prompt('Enter new title');
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
     });
 
-    this.board$.next([...this.board]);
+    if (currentColumn?.title) {
+      currentColumn.title = newTitle;
+
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
   }
 
   addCard(text: string, columnId: number) {
@@ -83,72 +80,72 @@ export class BoardService {
       text,
     };
 
-    this.board = this.initBoard.map((column: Column) => {
-      if (column.id === columnId) {
-        column.list = [newCard, ...column.list];
-      }
-      this.http
-        .put<any>(`http://localhost:3000/boards/${column.id}`, column)
-        .subscribe((res) => {
-          this.board$.next([...this.board]);
-        });
-      return column;
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
     });
 
-    this.board$.next([...this.board]);
+    if (currentColumn?.title) {
+      currentColumn.list = [...currentColumn.list, newCard];
+
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
   }
 
   deleteCard(cardId: number, columnId: number) {
-    this.board = this.initBoard.map((column: Column) => {
-      if (column.id === columnId) {
-        column.list = column.list.filter((card: Card) => card.id !== cardId);
-      }
-      this.http
-        .put<any>(`http://localhost:3000/boards/${column.id}`, column)
-        .subscribe((res) => {
-          this.board$.next([...this.board]);
-        });
-      return column;
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
     });
 
-    // this.board$.next([...this.board]);
+    if (currentColumn?.list) {
+      currentColumn.list = currentColumn.list.filter(
+        (card: Card) => card.id !== cardId
+      );
+
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
   }
 
   editCard(cardId: number, columnId: number) {
-    this.board = this.initBoard.map((column: Column) => {
-      if (column.id === columnId) {
-        const newText = prompt('Enter new card text');
-        if (newText) {
-          const card = column.list.find((el) => el.id === cardId);
-          if (card?.id) {
-            card.text = newText;
-          }
-        }
-      }
-      this.http
-        .put<any>(`http://localhost:3000/boards/${column.id}`, column)
-        .subscribe((res) => {
-          this.board$.next([...this.board]);
-        });
-      return column;
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
     });
 
-    this.board$.next([...this.board]);
+    if (currentColumn?.list) {
+      const newText = prompt('Enter new card text');
+      const card = currentColumn.list.find((el) => el.id === cardId);
+      if (card) {
+        card.text = newText;
+      }
+
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
   }
 
   changeColumnColor(color: string, columnId: number) {
-    this.board = this.initBoard.map((column: Column) => {
-      if (column.id === columnId) {
-        column.color = color;
-      }
-      this.http
-        .put<any>(`http://localhost:3000/boards/${column.id}`, column)
-        .subscribe((res) => {
-          this.board$.next([...this.board]);
-        });
-      return column;
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
     });
 
-    this.board$.next([...this.board]);
+    if (currentColumn?.color) {
+      currentColumn.color = color;
+
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
   }
 }

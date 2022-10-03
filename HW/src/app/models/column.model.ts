@@ -5,12 +5,12 @@ export interface Comment {
 
 export interface Card {
   id: number;
-  text: string;
+  text: string | null;
 }
 
 export interface Column {
   id: number;
-  title: string;
+  title: string | null;
   description: string;
   creationDate: Date | string;
   color: string;
