@@ -1,6 +1,11 @@
+<app-search></app-search>
 <div cdkDropListGroup class="container">
   <div class="items">
-    <div *ngFor="let column of boardService.getBoard$() | async" class="item">
+    <div
+      *ngFor="let column of boardService.getBoard$() | async"
+      class="item"
+      id="{{ column.id }}"
+    >
       <div class="top-content">
         <div class="top">
           <h2>{{ column.title }}</h2>
@@ -25,12 +30,23 @@
           (emitColor)="onColorChange($event, column.id)"
         ></app-color-panel>
 
-        <app-dialog
+        <!-- <app-dialog
           (emitText)="onAddCard($event, column.id)"
           [question]="'Add new card in ' + column.title + ' column'"
         >
           <button><span>Add</span><i class="fa fa-plus"></i></button>
-        </app-dialog>
+        </app-dialog> -->
+
+        <button (click)="closeInput()">
+          <span>Add</span><i class="fa fa-plus"></i>
+        </button>
+        <app-add
+          *ngIf="display"
+          [visible]="closeInput.bind(this)"
+          [formValues]="onAddCard.bind(this)"
+          [colId]="column.id"
+          (emitText)="onAddCard($event, column.id)"
+        ></app-add>
       </div>
 
       <div

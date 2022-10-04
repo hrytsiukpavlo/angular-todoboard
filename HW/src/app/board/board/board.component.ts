@@ -13,22 +13,32 @@ import { BoardService } from 'src/app/services/board.service';
 })
 export class BoardComponent implements OnInit {
   public board = [];
+  display = false;
   constructor(public boardService: BoardService) {}
 
   ngOnInit(): void {
-    this.boardService.getBoard$().subscribe(data=>{
-      console.log('data', data)
-    })
+    this.boardService.getBoard$().subscribe((data) => {
+      console.log('data', data);
+    });
+  }
+
+  closeInput() {
+    this.display = !this.display;
   }
 
   onColorChange(color: string, columnId: number) {
     this.boardService.changeColumnColor(color, columnId);
   }
 
+  // onAddCard(text: string, columnId: number) {
+  //   if (text) {
+  //     this.boardService.addCard(text, columnId);
+  //   }
+  // }
+
   onAddCard(text: string, columnId: number) {
-    if (text) {
-      this.boardService.addCard(text, columnId);
-    }
+    console.log(text);
+    console.log(columnId);
   }
 
   onEditColumn(columnId: number) {

@@ -1,0 +1,17 @@
+<div class="search">
+  <div class="search-item">
+    <input (change)="change($event)" />
+    <button>Search</button>
+    <button (click)="cancelClick()">Cancel</button>
+  </div>
+  <div class="sort-item">
+    <select (change)="selectChangeHandler($event)">
+      <option value="title_desc">Name (DESC)</option>
+      <option value="title_asc">Name (ASC)</option>
+      <option value="creationDate_asc">Date (ASC)</option>
+      <option value="creationDate_desc">Date (DESC)</option>
+      <option value="list_asc">Length (ASC)</option>
+      <option value="list_desc">Length (DESC)</option>
+    </select>
+  </div>
+</div>

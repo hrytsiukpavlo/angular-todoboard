@@ -1,0 +1,21 @@
+.search {
+  box-shadow: 0 0 3px;
+  width: 100%;
+  height: 70px;
+  margin: 10px 0;
+  // flex-direction: column;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.search-item {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+}
+
+.sort-item {
+  margin-left: 80px;
+}

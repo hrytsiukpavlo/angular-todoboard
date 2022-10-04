@@ -20,8 +20,8 @@ export class BoardService {
     return result;
   }
 
-  private board: Column[] = this.initBoard;
-  private board$ = new BehaviorSubject<Column[]>(this.initBoard);
+  public board: Column[] = this.initBoard;
+  public board$ = new BehaviorSubject<Column[]>(this.initBoard);
 
   getBoard$() {
     return this.board$.asObservable();
@@ -147,5 +147,34 @@ export class BoardService {
           this.board$.next([...this.board$.value]);
         });
     }
+  }
+
+  searchFilter(value) {
+    this.http
+      .get<any>(`http://localhost:3000/boards?title_like=${value}`)
+      .subscribe((response) => {
+        this.initBoard = response;
+        this.board$.next(this.initBoard);
+      });
+  }
+
+  cancelFilter() {
+    this.http.get<any>(`http://localhost:3000/boards`).subscribe((response) => {
+      this.initBoard = response;
+      this.board$.next(this.initBoard);
+    });
+  }
+
+  sortBoard(value) {
+    this.http
+      .get<any>(
+        `http://localhost:3000/boards?_sort=${value.split('_')[0]}&_order=${
+          value.split('_')[1]
+        }`
+      )
+      .subscribe((response) => {
+        this.initBoard = response;
+        this.board$.next(this.initBoard);
+      });
   }
 }
