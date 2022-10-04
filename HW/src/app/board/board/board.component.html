@@ -33,14 +33,14 @@
           <button><span>Add</span><i class="fa fa-plus"></i></button>
         </app-dialog> -->
 
-        <button (click)="closeInput()" id="{{ column.id }}">
+        <button (click)="closeInput.bind(this, column.id)()" id="{{ column.id }}">
           <span>Add</span><i class="fa fa-plus"></i>
         </button>
-
         <app-add
-          *ngIf="display"
           [visible]="closeInput.bind(this)"
           [formValues]="onAddCard.bind(this)"
+          [testVal]="this.selectedColumnId"
+          *ngIf="display"
         ></app-add>
       </div>
 

@@ -30,7 +30,8 @@ export class InputComponent implements OnInit {
   }
 
   @Input() visible: (args?: any) => void | undefined;
-  @Input() formValues: (title: string, id: any) => void | undefined;
+  @Input() formValues: (title: string, id: number) => void | undefined;
+  @Input() testVal: number | undefined;
   @Input() colId: any;
   @Output() emitText: EventEmitter<any> = new EventEmitter();
 
@@ -42,11 +43,11 @@ export class InputComponent implements OnInit {
 
   submit(event) {
     this.visible();
-
+    console.log(this.testVal)
     // this.emitText.emit(event);
     // console.log(this.form.value);
-    // if (this.form.value.title) {
-    //   this.formValues(this.form.value.title);
-    // }
+    if (this.form.value.title && this.testVal) {
+      this.formValues(this.form.value.title, this.testVal);
+    }
   }
 }

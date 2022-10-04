@@ -2,7 +2,7 @@
   "boards": [
     {
       "id": 1664809328982,
-      "title": "333",
+      "title": "32457689",
       "description": "222",
       "creationDate": "03/10/2022",
       "color": "#000000",
@@ -12,12 +12,12 @@
           "text": "1111"
         },
         {
-          "id": 1664811784097,
-          "text": "12312312"
-        },
-        {
           "id": 1664897369217,
           "text": "adsasdsad"
+        },
+        {
+          "id": 1664905409333,
+          "text": "228"
         }
       ]
     },
@@ -27,39 +27,55 @@
       "description": "Popo",
       "creationDate": "04/10/2022",
       "color": "#009886",
-      "list": []
-    },
-    {
-      "id": 1664887812023,
-      "title": "Dodo",
-      "description": "Dodo",
-      "creationDate": "04/10/2022",
-      "color": "#009886",
-      "list": []
+      "list": [
+        {
+          "id": 1664903370402,
+          "text": "test"
+        }
+      ]
     },
     {
       "id": 1664888548072,
       "title": "Blob",
       "description": "Blob",
       "creationDate": "04/10/2022",
-      "color": "#009886",
-      "list": []
+      "color": "#3B5BA5",
+      "list": [
+        {
+          "id": 1664905396209,
+          "text": "1243546576i78"
+        }
+      ]
     },
     {
       "id": 1664889229621,
       "title": "Zorro",
       "description": "Zorro",
       "creationDate": "04/10/2022",
-      "color": "#009886",
-      "list": []
+      "color": "#EDC400",
+      "list": [
+        {
+          "id": 1664903378513,
+          "text": "asdfas"
+        }
+      ]
     },
     {
       "id": 1664889236260,
       "title": "Abuba",
       "description": "Abuba",
       "creationDate": "04/10/2022",
-      "color": "#009886",
-      "list": []
+      "color": "#D49BAE",
+      "list": [
+        {
+          "id": 1664905426851,
+          "text": "09asd09asd"
+        },
+        {
+          "id": 1664905431263,
+          "text": "25463475"
+        }
+      ]
     },
     {
       "id": 1664889255408,
@@ -67,7 +83,12 @@
       "description": "Babuba",
       "creationDate": "04/10/2022",
       "color": "#009886",
-      "list": []
+      "list": [
+        {
+          "id": 1664905384109,
+          "text": "213123"
+        }
+      ]
     },
     {
       "id": 1664890979310,
@@ -76,6 +97,19 @@
       "creationDate": "04/10/2022",
       "color": "#009886",
       "list": []
+    },
+    {
+      "id": 1664905463698,
+      "title": "Vava",
+      "description": "Vava",
+      "creationDate": "04/10/2022",
+      "color": "#009886",
+      "list": [
+        {
+          "id": 1664905466731,
+          "text": "143524635476u5i6o"
+        }
+      ]
     }
   ]
 }

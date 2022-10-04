@@ -14,6 +14,7 @@ import { BoardService } from 'src/app/services/board.service';
 export class BoardComponent implements OnInit {
   public board = [];
   display = false;
+  selectedColumnId: number | undefined;
 
   constructor(public boardService: BoardService) {}
 
@@ -23,15 +24,20 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  closeInput() {
+  closeInput(id:number) {
     this.display = !this.display;
+    if(id){
+      this.selectedColumnId = id;
+    } else {
+      this.selectedColumnId = undefined
+    }
   }
 
   onColorChange(color: string, columnId: number) {
     this.boardService.changeColumnColor(color, columnId);
   }
 
-  onAddCard(text: string, columnId: number) {
+  onAddCard(text: string, columnId: number,) {
     if (text) {
       this.boardService.addCard(text, columnId);
     }
