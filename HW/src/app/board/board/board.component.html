@@ -1,11 +1,7 @@
 <app-search></app-search>
 <div cdkDropListGroup class="container">
   <div class="items">
-    <div
-      *ngFor="let column of boardService.getBoard$() | async"
-      class="item"
-      id="{{ column.id }}"
-    >
+    <div *ngFor="let column of boardService.getBoard$() | async" class="item">
       <div class="top-content">
         <div class="top">
           <h2>{{ column.title }}</h2>
@@ -37,15 +33,14 @@
           <button><span>Add</span><i class="fa fa-plus"></i></button>
         </app-dialog> -->
 
-        <button (click)="closeInput()">
+        <button (click)="closeInput()" id="{{ column.id }}">
           <span>Add</span><i class="fa fa-plus"></i>
         </button>
+
         <app-add
           *ngIf="display"
           [visible]="closeInput.bind(this)"
           [formValues]="onAddCard.bind(this)"
-          [colId]="column.id"
-          (emitText)="onAddCard($event, column.id)"
         ></app-add>
       </div>
 

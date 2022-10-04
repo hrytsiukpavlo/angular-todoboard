@@ -23,6 +23,7 @@ export class InputComponent implements OnInit {
     this.visible = () => {
       console.log('chcahschas');
     };
+
     this.formValues = () => {
       console.log('form values');
     };
@@ -41,7 +42,8 @@ export class InputComponent implements OnInit {
 
   submit(event) {
     this.visible();
-    this.emitText.emit();
+
+    // this.emitText.emit(event);
     // console.log(this.form.value);
     // if (this.form.value.title) {
     //   this.formValues(this.form.value.title);

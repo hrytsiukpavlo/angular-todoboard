@@ -14,6 +14,7 @@ import { BoardService } from 'src/app/services/board.service';
 export class BoardComponent implements OnInit {
   public board = [];
   display = false;
+
   constructor(public boardService: BoardService) {}
 
   ngOnInit(): void {
@@ -30,15 +31,10 @@ export class BoardComponent implements OnInit {
     this.boardService.changeColumnColor(color, columnId);
   }
 
-  // onAddCard(text: string, columnId: number) {
-  //   if (text) {
-  //     this.boardService.addCard(text, columnId);
-  //   }
-  // }
-
   onAddCard(text: string, columnId: number) {
-    console.log(text);
-    console.log(columnId);
+    if (text) {
+      this.boardService.addCard(text, columnId);
+    }
   }
 
   onEditColumn(columnId: number) {
