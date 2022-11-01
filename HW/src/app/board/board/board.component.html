@@ -33,7 +33,10 @@
           <button><span>Add</span><i class="fa fa-plus"></i></button>
         </app-dialog> -->
 
-        <button (click)="closeInput.bind(this, column.id)()" id="{{ column.id }}">
+        <button
+          (click)="closeInput.bind(this, column.id)()"
+          id="{{ column.id }}"
+        >
           <span>Add</span><i class="fa fa-plus"></i>
         </button>
         <app-add
