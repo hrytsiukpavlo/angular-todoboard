@@ -1,6 +1,16 @@
 <div class="card">
   <div>{{ item.text }}</div>
   <div>
+    <button (click)="onCardCheck(item.id)" *ngIf="!item.checked">
+      <button>
+        <i class="fa fa-circle-o"></i>
+      </button>
+    </button>
+    <button (click)="onCardCheck(item.id)" *ngIf="item.checked">
+      <button>
+        <i class="fa fa-circle"></i>
+      </button>
+    </button>
     <button (click)="onCardEdit(item.id)">
       <button><i class="fa fa-edit"></i></button>
     </button>

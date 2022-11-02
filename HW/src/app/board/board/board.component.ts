@@ -24,12 +24,12 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  closeInput(id:number) {
+  closeInput(id: number) {
     this.display = !this.display;
-    if(id){
+    if (id) {
       this.selectedColumnId = id;
     } else {
-      this.selectedColumnId = undefined
+      this.selectedColumnId = undefined;
     }
   }
 
@@ -37,7 +37,7 @@ export class BoardComponent implements OnInit {
     this.boardService.changeColumnColor(color, columnId);
   }
 
-  onAddCard(text: string, columnId: number,) {
+  onAddCard(text: string, columnId: number) {
     if (text) {
       this.boardService.addCard(text, columnId);
     }
@@ -57,6 +57,10 @@ export class BoardComponent implements OnInit {
 
   onDeleteCard(cardId: number, columnId: number) {
     this.boardService.deleteCard(cardId, columnId);
+  }
+
+  onCheckCard(cardId: number, columnId: number) {
+    this.boardService.checkCard(cardId, columnId);
   }
 
   drop(event: CdkDragDrop<any>) {

@@ -78,6 +78,7 @@ export class BoardService {
     const newCard: Card = {
       id: Date.now(),
       text,
+      checked: false,
     };
 
     let currentColumn = this.board$.value.find((el) => {
@@ -125,6 +126,24 @@ export class BoardService {
         card.text = newText;
       }
 
+      this.http
+        .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
+        .subscribe((res) => {
+          this.board$.next([...this.board$.value]);
+        });
+    }
+  }
+
+  checkCard(cardId: number, columnId: number) {
+    let currentColumn = this.board$.value.find((el) => {
+      return el.id === columnId;
+    });
+
+    if (currentColumn?.list) {
+      const card = currentColumn.list.find((el) => el.id === cardId);
+      if (card) {
+        card.checked = !card.checked;
+      }
       this.http
         .put<any>(`http://localhost:3000/boards/${columnId}`, currentColumn)
         .subscribe((res) => {

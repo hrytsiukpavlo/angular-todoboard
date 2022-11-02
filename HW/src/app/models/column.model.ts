@@ -6,6 +6,7 @@ export interface Comment {
 export interface Card {
   id: number;
   text: string | null;
+  checked: boolean;
 }
 
 export interface Column {
